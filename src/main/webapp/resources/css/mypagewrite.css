@@ -1,0 +1,405 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.section {
+    width: 1300px; /* 부모 요소는 100% 너비로 설정 */
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    flex-direction: column; /* 자식 요소들을 세로로 배치 */
+    padding: 20px; /* 여백을 줘서 중앙으로 배치 */
+}
+
+.background {
+    width: 800px; /* 고정 너비 설정 */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    border: 2px solid #6495ED; /* 테두리 설정 */
+    padding: 40px;
+    border-radius: 15px;
+}
+
+
+.background > hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width:98%;
+    border: none; /* 기본 테두리 제거 */
+    height: 2px; /* 선의 두께를 5px로 설정 (원하는 두께로 변경 가능) */
+    background-color: #6495ED; /* 선의 색상 설정 */
+}
+
+.mywrite-title {
+    width: 800px;
+    height: 50px;
+    margin-bottom: 2px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.mywrite-title > h2 {
+    font-size: 20px;
+}
+
+.mywrite-category {
+    width: 800px;
+    height: 50px;
+    justify-content: start;
+    align-items: center;
+    display: flex;
+    background-color: white;
+}
+
+.mywrite-category > button {
+    width: 70px;
+    height: 40px;
+    border: solid 1px rgb(0, 0, 0, 0.3);
+    border-radius: 30px;
+    background-color: white;
+}
+
+.mywrite-category > button:hover {
+    width: 70px;
+    height: 40px;
+    border: solid 1px rgb(0, 0, 0, 0.3);
+    border-radius: 30px;
+    background-color: white;
+    text-decoration: rgba(0, 0, 0, 0.3);
+}
+
+.mywrite-category > button:nth-child(1) {
+    margin: 0px 10px 0px 30px;
+}
+
+.mywrite-category > button:nth-child(2) {
+    margin: 0px 10px 0px 0px;
+}
+
+.mywrite-comment-none {
+    display: none;
+    background-color: white;
+    width: 800px;
+    height: auto;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.mywrite-comment-none > p {
+    font-size: 13px;
+    margin: 0 auto;
+    color: rgb(0, 0, 0, 0.5);
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.mywrite-content-exist {
+    display: none;
+    background-color: white;
+    width: 800px;
+    height: 100%;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    border: 2px solid #6495ED; /* 테두리 설정 */
+    padding: 5px;
+    border-radius:15px;
+}
+
+.mywrite-comment-exist {
+    display: none;
+    background-color: white;
+    width: 800px;
+    height: 100%;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    border: 2px solid #6495ED; /* 테두리 설정 */
+    padding: 5px;
+    border-radius:15px;
+}
+
+#comment-list {
+    width: 800px;
+    height: 355px;
+    overflow: auto; /* 넘칠 때만 스크롤바 표시 */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+}
+
+.comment-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 트랜지션 추가 */
+    cursor:pointer;
+}
+
+.comment-card:hover {
+    transform: translateY(-5px); /* 위로 5px 이동 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 더 강한 그림자 */
+    border:solid 1px lightblue;
+}
+
+
+.comment-header {
+    display: flex;
+    align-items: flex-start; /* 이미지와 텍스트의 수직 정렬 */
+}
+
+.comment-image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.comment-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.comment-content {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.comment-date {
+    font-size: 12px;
+    color: #888;
+    text-align: right; /* 작성 날짜를 우측에 정렬 */
+}
+/* end comment css */
+#content-list {
+    width: 800px;
+    height: 355px;
+    overflow: auto; /* 넘칠 때만 스크롤바 표시 */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+}
+
+.content-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 트랜지션 추가 */
+    cursor:pointer;
+}
+
+.content-card:hover {
+    transform: translateY(-5px); /* 위로 5px 이동 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 더 강한 그림자 */
+    border:solid 1px lightblue;
+}
+
+
+.content-header {
+    display: flex;
+    align-items: flex-start; /* 이미지와 텍스트의 수직 정렬 */
+}
+
+.content-image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.content-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.content-author {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.content-content {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.content-date {
+    font-size: 12px;
+    color: #888;
+    text-align: right; /* 작성 날짜를 우측에 정렬 */
+}
+
+/* 커뮤니티 댓글 */
+.mywrite-comment2-exist {
+    display: none;
+    background-color: white;
+    width: 800px;
+    height: 100%;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    border: 2px solid #6495ED; /* 테두리 설정 */
+    padding: 5px;
+    border-radius:15px;
+}
+
+#comment2-list {
+    width: 800px;
+    height: 355px;
+    overflow: auto; /* 넘칠 때만 스크롤바 표시 */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+}
+
+.comment2-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 트랜지션 추가 */
+    cursor:pointer;
+}
+
+.comment2-card:hover {
+    transform: translateY(-5px); /* 위로 5px 이동 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 더 강한 그림자 */
+    border:solid 1px lightblue;
+}
+
+
+.comment2-header {
+    display: flex;
+    align-items: flex-start; /* 이미지와 텍스트의 수직 정렬 */
+}
+
+.comment2-image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.comment2-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.comment2-author {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.comment2-content {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.comment2-date {
+    font-size: 12px;
+    color: #888;
+    text-align: right; /* 작성 날짜를 우측에 정렬 */
+}
+
+#redirectButton_comment{
+	cursor:pointer;	
+}
+
+#redirectButton_comment2{
+	cursor:pointer;	
+}
+
+
+#redirectButton_post{
+	cursor:pointer;	
+}
+
+#redirectButton_comment:hover{
+	background-color:lightblue;
+}
+
+#redirectButton_post:hover{
+	background-color:lightblue;
+}
+
+#redirectButton_comment2:hover{
+	background-color:lightblue;
+}
+
+.homebt {
+    width: 40px;
+    height: 40px;
+    background-image: url("../img/homebt.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease; /* 크기 변화를 위한 부드러운 전환 */
+}
+
+/* 마우스를 올렸을 때 흔들리는 애니메이션 */
+.homebt:hover {
+    animation: shake 0.5s ease;
+    animation-iteration-count: 2; /* 애니메이션이 두 번 반복되도록 */
+}
+
+/* 버튼 흔들흔들 애니메이션 정의 */
+@keyframes shake {
+    0% { transform: translate(0, 0); } /* 제자리 */
+    50% { transform: translate(0, -2px); } /* 위로 이동 */
+    100% { transform: translate(0, 0); } /* 제자리 */
+}
+
+/* 클릭했을 때 크기 작아짐 */
+.homebt:active {
+    transform: scale(0.9); /* 버튼이 90% 크기로 작아짐 */
+    transition: transform 0.1s ease; /* 클릭 후 크기 변화를 부드럽게 전환 */
+}
+
+
+
+

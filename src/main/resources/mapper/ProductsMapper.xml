@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.human.cds.mapper.ProductsMapper">
+
+	
+	<insert id="insertProducts" parameterType="com.human.cds.vo.ProductsVO$Products">
+	    INSERT IGNORE INTO products (
+	        addr1, areacode, cat1, cat2, cat3, contentid, contenttypeid, 
+	        firstimage, mapx, mapy, mlevel, 
+	        tel, title
+	    ) VALUES (
+	        #{addr1}, #{areacode}, #{cat1}, #{cat2}, #{cat3}, 
+	        #{contentid}, #{contenttypeid}, #{firstimage},
+	       #{mapx}, #{mapy}, #{mlevel}, 
+	        #{tel}, #{title}
+	    );
+	</insert>
+	    
+	    
+	<select id="getProductsList" resultType="com.human.cds.vo.ProductsVO$Products">
+		    select *
+		    from products
+	</select>
+	    
+    
+	<update id="updateAreaName" parameterType="map">
+		update products
+			set areaname = #{areaName}
+			where contentid = #{contentid}
+	</update>  
+	
+	<select id="getProducts" resultType="com.human.cds.vo.ProductsVO$Products">
+		select * from products
+		where contentid = #{contentid}
+	</select>
+	
+<update id="updateProductDetails" parameterType="map">
+    UPDATE products
+    SET 
+        homepage = #{homepage}, 
+        info = #{info}, 
+        opendate = #{opendate}, 
+        restdate = #{restdate}, 
+        price = #{price}, 
+        usetime = #{usetime},
+        overview = #{overview}
+    WHERE contentid = #{contentid}
+</update>
+	
+<update id="updateProductInfo" parameterType="map">
+    UPDATE products
+    SET 
+      
+        infoname1 = #{infoname1},
+        infotext1 = #{infotext1},
+        infoname2 = #{infoname2},
+        infotext2 = #{infotext2},
+        infoname3 = #{infoname3},
+        infotext3 = #{infotext3},
+        infoname4 = #{infoname4},
+        infotext4 = #{infotext4}
+    WHERE contentid = #{contentid}
+</update>
+
+
+	
+	<select id="getProductsPage" parameterType="map" resultType="com.human.cds.vo.ProductsVO$Products">
+    SELECT *
+    FROM products
+    LIMIT #{offset}, #{limit}
+</select>
+	  
+	  <select id="searchProducts" resultType="com.human.cds.vo.ProductsVO$Products">
+    SELECT * FROM products
+    WHERE title LIKE CONCAT('%', #{searchTerm}, '%')
+</select>
+	  
+    <select id="getEventProducts" resultType="com.human.cds.vo.ProductsVO$Products">
+    SELECT * FROM products
+    WHERE cat3 LIKE 'A02080%'
+    ORDER BY RAND()
+    LIMIT 3
+	</select>
+    
+
+	
+</mapper>

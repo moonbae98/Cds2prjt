@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.human.cds.mapper.FestivalMapper">
+<!-- namespace: XML 파일에서 내용의 구분을 위해서 사용 -->
+
+	<insert id="insertFestival" parameterType="FestivalVO">
+        INSERT INTO festival (f_contentid, f_sigungucode, f_title, f_addr1, f_addr2, f_eventstartdate, 
+        						f_eventenddate, f_firstimage, f_mapx, f_mapy, f_areacode, f_tel)
+        VALUES (#{contentid}, #{sigungucode}, #{title}, #{addr1}, #{addr2}, #{eventstartdate}, 
+        			#{eventenddate}, #{firstimage}, #{mapx}, #{mapy}, #{areacode}, #{tel})
+    </insert>
+    
+	<select id="getAreaList" resultType="FestivalDBVO">
+	SELECT f_sigunguname, f_sigungucode
+		FROM festival
+		WHERE f_areacode = #{areaCode} and f_sigunguname is not null
+		GROUP BY f_sigunguname, f_sigungucode
+		ORDER BY CAST(f_sigungucode AS UNSIGNED)
+	</select>
+	
+	<select id="getFestivalAllList" resultType="FestivalDBVO">
+		select * from festival
+	</select>
+    
+    <select id="getFestivalList" resultType="FestivalDBVO">
+	    select * from festival
+	    limit 20
+	</select>
+	<!-- limit 20 -->
+	
+	<select id="getFestivalAreaSelectList" resultType="FestivalDBVO">
+		select * from festival
+		where f_areacode = #{areaCode}
+	</select>
+	
+	<update id="updateAreaName" parameterType="map">
+		update festival
+			set f_areaname = #{areaName}, f_sigunguname = #{sigunguName}
+			where f_contentid = #{contentid}
+	</update>
+	
+	<select id="getFestivalDateSelectList" resultType="FestivalDBVO">
+		select * from festival
+    		where #{selectDate} between f_eventstartdate and f_eventenddate
+	</select>
+	
+	<select id="getFestivalAreaDateSelectList" parameterType="map" resultType="FestivalDBVO">
+		select * from festival
+			where #{selectDate} between f_eventstartdate and f_eventenddate
+				and f_areacode = #{areaCode}
+	</select>
+	
+	<select id="getFestival" resultType="FestivalModalVO">
+		select * from festival
+			where f_contentid = #{contentid}
+	</select>
+	
+	<select id="getFestivalSoonList" parameterType="map" resultType="FestivalDBVO">
+		select * from festival
+			where f_eventstartdate between #{selectDate}+1 and 20991231
+				and f_areacode = #{areaCode}
+	</select>
+	
+	<select id="getFestivalSearchTitle" resultType="FestivalDBVO">
+		select * from festival
+			where trim(f_title) like concat('%', #{searchText}, '%')
+	</select>
+	
+	<select id="getFestivalRandomList" resultType="FestivalDBVO">
+		select * from festival
+			where f_contentid not in <foreach item="id" collection="list" open="(" separator="," close=")">
+										#{id}
+									</foreach>
+				and f_firstimage != ''
+			order by rand()
+			limit 3
+	</select>
+	
+	<select id="getFestivalAllRandomList" resultType="FestivalDBVO">
+		select * from festival
+			where f_firstimage != ''
+			order by rand()
+			limit 3
+	</select>
+	
+	<select id="getMoreFestivalData" resultType="FestivalDBVO">
+		select * from festival
+			limit #{page}, 20
+	</select>
+	
+	<select id="getFestivaldetailSelectList" parameterType="map" resultType="FestivalDBVO">
+		select * from festival
+			where f_areacode = #{selectarea} and f_sigunguCode = #{selectsigungu}
+	</select>
+	
+	<select id="getFestivalNoAreaSoonList" resultType="FestivalDBVO">
+		select * from festival
+			where f_eventstartdate between #{selectDate}+1 and 20991231
+	</select>
+	
+		
+</mapper>

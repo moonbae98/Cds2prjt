@@ -1,0 +1,383 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+}
+
+section {
+    width: 100%;
+    position: relative;
+    
+}
+
+.desheader {
+    width: 100%;
+    height: 350px;
+    background-color: rgba(213, 231, 246);
+}
+
+.desheader_1 {
+    background-image: url(prjt-이미지.PNG);
+    background-size: cover;
+    height: 400px;
+    width: 100%;
+}
+
+.desheader_1a {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.desheader_1a h2 {
+    font-size: 50px;
+    margin: 50px 200px 0 0;
+}
+
+.desheader_1a p {
+    font-size: 40px;
+    margin: 0 200px 40px 0;
+}
+
+.desheader_2 {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    
+}
+
+.desheader_2> span {
+    cursor: pointer;
+    font-size: 24px;
+    user-select: none;
+    background-color:transparent;
+    z-index: 10;
+    color: #333;
+    padding: 10px;
+    border-radius: 50%;
+    border:1px solid rgb(0,0,0,0.3);
+}
+
+
+.region-container {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 90%;
+}
+
+.region-circles {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.circle-item {
+    text-align: center;
+}
+
+.desheader_circle {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    background-position: center;
+    margin: 0 15px;
+    cursor:pointer;]
+}
+
+.desheader_circle:hover {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    background-size: cover;
+    background-position: center;
+    border:skyblue solid 2px;
+    cursor:pointer;
+   
+    
+}
+
+.circle-item p {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+/* 선택 부분 스타일 */
+.desselect {
+    display: flex;
+    align-items: center;
+}
+
+.desselect h3 {
+    margin: 25px 10px 0px 160px;
+    font-size: 30px;
+}
+
+.desselect select {
+    width: 80px;
+    height: 40px;
+    font-size: 15px;
+    margin: 50px 10px 20px 0px;
+    color: gray;
+    border:solid 1px skyblue;
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+.desselect input {
+    width: 200px;
+    height: 40px;
+  	position: relative;
+  	left:46.5%;
+  	margin-top:20px;
+	border:2px solid skyblue;
+    border-radius: 5px;
+}
+
+.desselect input::placeholder{
+	
+	text-align:left;
+	padding-left:10px;
+}
+
+.desselect input:focus {
+	outline:none;
+	border:2px solid skyblue;
+	box-shadow:none;
+	
+}
+
+.desimg1 {
+	width:950px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);  /* 4열 고정 */
+    grid-gap: 20px;  /* 항목 간 간격 */
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.desList {
+	width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    text-align: center;
+    flex-direction: column;  /* 이미지와 텍스트를 위아래로 정렬 */
+    align-items: center;
+    border:1px solid rgb(0,0,0,0.2);
+    cursor:pointer;
+}
+
+.desList:hover {
+	width: 130%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    text-align: center;
+    flex-direction: column;  /* 이미지와 텍스트를 위아래로 정렬 */
+    align-items: center;
+    border:1px solid rgb(0,0,0,0.2);
+    cursor:pointer;
+    z-index:1000;
+}
+
+.desimg-container {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    
+}
+
+.desimg-container img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+
+}
+
+.des-title {
+    padding: 10px;
+    font-size: 13px;
+    font-weight:bold;
+    color: #333;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-break: break-word;  /* 긴 단어 줄바꿈 */
+    background-color: #f8f8f8;  /* 텍스트 영역 배경색 */
+    
+}
+
+
+
+/* 모달 창 스타일 */
+.modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modalbox {
+    background-color: white;
+    width: 700px;
+    height: 820px;
+    margin: 3% auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1001;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow-y: scroll;
+}
+
+.modalbox::-webkit-scrollbar{
+    display: none;
+}
+
+.boxtitle{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-itmes:center;
+	text-align:center;
+	
+	
+}
+
+.boxtitle>h2 {
+	font-size:40px;
+	margin-top:30px;
+	margin-bottom:15px;
+	
+}
+
+.boxtitle>p{
+	margin-bottom:40px;
+	
+}
+
+.modalbox img {
+    width: 100%;
+    height: auto;
+}
+
+.boxoverview{
+	display:flex;
+	flex-direction:column;
+	
+}
+
+.boxoverview>h2{
+	font-size:30px;
+	margin-top:30px;
+	margin-bottom:15px;
+	
+}
+
+.boxoverviewtext{
+	border-top:solid 1px rgba(0,0,0,0.3);
+	border-bottom: solid 1px rgba(0,0,0,0.3);
+	margin-bottom:15px;
+	
+}
+
+.boxoverviewtext>p{
+	padding:15px 0px 15px 0px;
+	
+}
+
+.boxaddr{
+	
+	margin-top:10px;
+	margin-bottom:20px;
+	display:flex;	
+	
+}
+
+.boxaddr>p{
+	
+	font-size:14px;
+	
+}
+
+.boxdetailinfo{
+	width:100%;
+	display:flex;
+	flex-direction:column;
+	
+}
+.boxdetailinfo>p{
+	font-size:13px;
+}
+
+.boxdetailinfotext{
+	width:660px;
+	display:flex;
+	margin-top:15px;
+	border-top:1px solid rgb(0,0,0,0.4);
+	border-bottom:1px solid rgb(0,0,0,0.4);
+	
+	
+}
+
+.detailtext1{
+	display:flex;
+	flex-direction:column;
+	justify-content:start;
+	font-size:13px;
+	color:rgb(0,0,0,0,4);
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+ .detailtext2{
+ display:flex;
+	flex-direction:column;
+	justify-content: end;
+	margin-left:100px;
+	font-size:13px;
+	padding-top:15px;
+	padding-bottom:15px;
+	color:rgb(0,0,0,0,4);
+	
+ }
+ 
+.desslogan{
+	width:1250px;		
+	margin-top:50px;
+	
+	
+}
+
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    cursor:pointer;
+}

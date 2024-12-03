@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.section {
+    width: 100%; /* 부모 요소는 100% 너비로 설정 */
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    flex-direction: column; /* 자식 요소들을 세로로 배치 */
+    padding: 20px; /* 여백을 줘서 중앙으로 배치 */
+}
+
+.background {
+    width: 800px; /* 고정 너비 설정 */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #6495ED; /* 테두리 설정 */
+    margin-top: 50px;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.mystatus-title {
+    width: 800px;
+    height: 50px;
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+.mystatus-title>h2{
+    font-size: 20px;
+}
+.mystatus-content {
+    width: 800px;
+    height: 130px;
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top:2px;
+
+}
+
+.mystatus-content>div{
+    width: 760px;
+    height: 100px;
+    justify-content: start;
+    align-items: center;
+    text-align: start;
+    margin-top: 30px;
+}
+.mystatus-content>div>li{
+    margin: 10px 0px 10px 0px;
+    font-size: 12px;
+
+}
+
+.mystatus-check {
+
+    width: 800px;
+    height: 50px;
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.mystatus-check>div{
+    width: 760px;
+    height: 50px;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+    margin-top: 30px;
+    display:flex;
+}
+
+.mystatus-check>div>input{
+	width:20px;
+	height:20px;
+	
+	
+}
+.mystatus-check>div>p{
+	margin-left: 10px;
+	font-size:14px;
+}
+
+
+.mystatus-button {
+    display: flex;
+    width: 800px;
+    height: 60px;
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.mystatus-button>button{
+    width: 760px;
+    height: 40px;
+    border: none;
+    font-size: 20px;
+    background-color: rgb(98, 178, 235);
+    color: white;
+    border-radius: 30px;
+}
+
+.mystatus-button>button:hover{
+    width: 760px;
+    height: 40px;
+    border: none;
+    font-size: 20px;
+    background-color: rgb(192, 221, 241);
+    color: white;
+    border-radius: 30px;
+}

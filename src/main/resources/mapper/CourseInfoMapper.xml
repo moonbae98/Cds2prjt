@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.human.cds.mapper.CourseInfoMapper">
+	<!-- namespace: XML 파일에서 내용의 구분을 위해서 사용 -->
+
+	
+
+	<insert id="insertCourseInfo">
+		INSERT INTO travel_course (content_id, title, addr1,
+		addr2, area_code,
+		book_tour, cat1, cat2, cat3, content_type_id,
+		created_time,
+		first_image, first_image2, cpyrht_Div_Cd, map_x, map_y,
+		m_level,
+		modified_time, sigungu_code, tel, zipcode)
+		VALUES
+		(#{contentid}, #{title}, #{addr1}, #{addr2}, #{areacode},
+		#{booktour},
+		#{cat1}, #{cat2}, #{cat3}, #{contenttypeid},
+		#{createdtime},
+		#{firstimage}, #{firstimage2}, #{cpyrhtDivCd}, #{mapx}, #{mapy},
+		#{mlevel},
+		#{modifiedtime}, #{sigungucode}, #{tel}, #{zipcode});
+	</insert>
+
+	<select id="getTitleAndContentId" resultType="map">
+		SELECT title,
+		content_id, content_type_id
+		FROM travel_course
+	</select>
+
+
+	<update id="updateOverview">
+		UPDATE travel_course
+		SET overview = #{overview}
+		WHERE
+		content_id = #{contentId} and content_type_id = "25"
+	</update>
+
+	<select id="getCoursesByRegion" resultType="CourseInfoVO">
+		SELECT *
+		FROM
+		travel_course
+		WHERE area_code = #{areaCode}
+	</select>
+
+	<select id="getAllCourses" resultType="CourseInfoVO">
+		SELECT *
+		FROM travel_course
+	</select>
+
+	<select id="getCoursesByTheme" parameterType="String"
+		resultType="CourseInfoVO">
+		SELECT * FROM travel_course
+		WHERE cat2 = #{cat2}
+	</select>
+
+	<select id="getCoursesByRegionAndTheme" parameterType="map"
+		resultType="CourseInfoVO">
+		SELECT * FROM travel_course
+		WHERE area_code = #{areaCode}
+		AND cat2 = #{cat2}
+	</select>
+
+	<select id="getCourseByContentId" resultType="CourseInfoVO">
+		SELECT *
+		FROM
+		travel_course
+		WHERE content_id = #{contentid}
+	</select>
+
+	<update id="updateCourseDetails">
+		UPDATE travel_course
+		SET distance = #{distance},
+		taketime = #{taketime}
+		WHERE content_id = #{contentId} AND
+		content_type_id = #{contentTypeId}
+	</update>
+
+	<select id="getRandomFestival" resultType="FestivalDBVO">
+		SELECT *
+		FROM festival
+		WHERE f_firstimage != ''
+		AND f_eventstartdate > '20241100'
+		ORDER BY RAND()
+		limit 1;
+	</select>
+	
+	<insert id="insertComment">
+        INSERT INTO course_comment (name, content, content_id, created_at, updated_at ,gender)
+        VALUES (#{name}, #{content}, #{contentId}, NOW(), NOW(),#{gender});
+    </insert>
+
+	<resultMap id="CommentResultMap" type="CommentVO">
+    <result property="c_idx" column="c_idx"/>
+    <result property="name" column="name"/>
+    <result property="content" column="content"/>
+    <result property="contentId" column="content_id"/>
+    <result property="createdAt" column="created_at"/>
+    <result property="updatedAt" column="updated_at"/>
+    <result property="isDeleted" column="is_deleted"/>
+    <result property="clike" column="clike"/>
+    <result property="unlike" column="unlike"/>
+</resultMap>
+
+<select id="getCommentsByContentId" resultMap="CommentResultMap">
+    SELECT *
+    FROM course_comment
+    WHERE content_id = #{contentId}
+    ORDER BY created_at DESC
+    LIMIT #{pageSize} OFFSET #{offset}
+</select>
+
+<!-- 좋아요/싫어요 상태 확인 -->
+<select id="getLikeStatus" resultType="CommentLikeVO">
+    SELECT c_idx, name, action_type AS actionType
+    FROM comment_like 
+    WHERE c_idx = #{c_idx} AND name = #{name}
+</select>
+
+
+<!-- 좋아요/싫어요 추가 -->
+<insert id="addLike">
+    INSERT INTO comment_like (c_idx, name, action_type)
+    VALUES (#{c_idx}, #{name}, #{action_type})
+</insert>
+
+<!-- 좋아요/싫어요 제거 -->
+<delete id="removeLike">
+    DELETE FROM comment_like WHERE c_idx = #{c_idx} AND name = #{name}
+</delete>
+
+<!-- 좋아요 수 증가 -->
+<update id="incrementLikeCount">
+    UPDATE course_comment SET clike = clike + 1 WHERE c_idx = #{c_idx}
+</update>
+
+<!-- 싫어요 수 증가 -->
+<update id="incrementDislikeCount">
+    UPDATE course_comment SET unlike = unlike + 1 WHERE c_idx = #{c_idx}
+</update>
+
+<!-- 좋아요 수 감소 -->
+<update id="decrementLikeCount">
+    UPDATE course_comment SET clike = clike - 1 WHERE c_idx = #{c_idx}
+</update>
+
+<!-- 싫어요 수 감소 -->
+<update id="decrementDislikeCount">
+    UPDATE course_comment SET unlike = unlike - 1 WHERE c_idx = #{c_idx}
+</update>
+
+<update id="updateLike">
+    UPDATE comment_like
+    SET action_type = #{action_type}
+    WHERE c_idx = #{c_idx} AND name = #{name};
+</update>
+
+<select id="getRandomCourses" parameterType="int" resultType="CourseInfoVO">
+        SELECT * 
+        FROM travel_course
+        ORDER BY RAND()
+        limit 4
+    </select>
+    
+    <delete id="deleteComment">
+    DELETE FROM course_comment WHERE c_idx = #{c_idx}
+</delete>
+
+
+
+</mapper>	

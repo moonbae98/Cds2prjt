@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.human.cds.mapper.DestinationMapper">
+	<!-- id는 dao에서 sql.session뒤에 .뭐시기 그거랑 맞춰야함  -->
+	<insert id="insertDestination"><!-- 위에가 데베 아래가 vo -->
+		INSERT INTO destination (d_contentid,d_firstimage,d_sigungucode,d_areacode,
+		d_title,d_addr1,d_addr2,d_mapx,d_mapy)
+		VALUES (#{contentid},#{firstimage},#{sigungucode},
+		#{areacode},#{title},#{addr1},#{addr2},#{mapx},#{mapy})
+	</insert>
+
+
+	<select id="DestinationNameList" resultType="DestinationDBVO">
+        SELECT * FROM destination
+    </select>
+
+
+	<update id="DestinationName" parameterType="map">
+	    UPDATE destination
+        SET d_areaname = #{areaname}, d_sigunguname = #{sigunguname}
+        WHERE d_contentid = #{contentid}
+	</update>
+	
+	
+	<!-- 셀렉트창 시군구 뽑기 -->
+	<select id="DestinationSigungu" resultType="DestinationDBVO">
+		select d_sigungucode, d_sigunguname from destination
+		where #{areacode} = d_areacode
+		GROUP BY d_sigunguname , d_sigungucode
+	
+	</select>
+	
+	<!-- 지역코드와 시군구코드에 맞게 정보 불러오기 -->
+	<select id="DesList" resultType="DestinationDBVO" parameterType="map">
+		select * from destination
+		where  d_areacode = #{areacode} and d_sigungucode = #{sigungucode} 
+	</select>
+	
+	<select id="DesNoList" resultType="DestinationDBVO">
+		select * from destination
+		where d_areaname IN ('서울', '인천', '대전', '대구', '광주', '부산', '울산', '경기', '강원')
+		order by rand()
+		limit 20
+	</select>
+	
+	<select id="DestinationInfoList" resultType="DestinationModalVO">
+		select * from destination
+			where d_contentid = #{contentid}
+	</select>
+</mapper>
+
+
+

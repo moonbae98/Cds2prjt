@@ -1,0 +1,439 @@
+@charset "UTF-8";
+* {
+    padding: 0px;
+    box-sizing: border-box;
+    color: #000;
+}
+
+body{
+    max-width: 1300px;
+}
+
+button{
+    border: none;
+    background-color: #fff0;
+    cursor: pointer;
+}
+
+/* 헤더 : header.jsp */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff0;
+    border-bottom: 1px solid #ccc;
+    /* position: fixed; */
+}
+header>.headerLogo {
+    margin: 0;
+    cursor:pointer;
+}
+header>.headerLogo>img {
+    height: 80px;
+}
+header>.pageLink {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    margin: 20px 0;
+}
+header>.pageLink>div {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+header>.pageLink>div:hover {
+    color: #87bee5;
+}
+header>button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+header button img {
+    height: 40px; /* 프로필 이미지 높이 설정 */
+    width: 40px;
+}   
+
+/* 메인화면 중간 : section.jsp */
+#mainSection{
+    width: 100%;
+    height: max-content;
+}
+#mainSection>.mainTop{
+	width: 100%;
+	height: 600px;
+    background: url("../img/mainTopbackimg.png") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    padding: 13% 0px 0px 5%;
+}
+#mainSection>.mainTop>.topIntro{ /* 떠나자 간단소개 */
+    width: 38%;
+    margin-top: 10%;
+}
+#mainSection>.mainTop>.topIntro>h2{
+    color: #fff;
+    font-size: 30px;
+    margin: 10px 0px;
+}
+#mainSection>.mainTop>.topIntro>h2>span{
+	color: #fff;
+	font-size: 45px;
+}
+#mainSection>.mainTop>.topIntro>button{
+    background-color: #87bee585;
+    color: #fff;
+    font-size: 20px;
+    padding: 2%;
+    border-radius: 10px;
+    margin-left: 2%;
+}
+#mainSection>.mainTop>.topIntro>button>i{
+	color:#fff;
+}
+#mainSection>.mainTop>.imgSlider{ /* 지역코드별 관광지 */
+	width:65%;
+	overflow: hidden;
+}
+#mainSection>.mainTop>.imgSlider>.imgContainer>.imgList{
+	display: flex;
+	height: 300px;
+}
+#mainSection>.mainTop>.imgSlider>.imgContainer>.imgList>.imgItem{
+	flex: 0 0 170px;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 3%;
+}
+#mainSection>.mainTop>.imgSlider>.imgContainer>.imgList>.imgItem>div{
+	background: no-repeat center center;
+    background-size: cover;
+    cursor: pointer;
+    width: 100%;
+    height: 200px;
+    border: solid 4px #cecece;
+    border-radius: 20px;
+    height: 200px;
+}
+#mainSection>.mainTop>.imgSlider>.imgContainer>.imgList>.imgItem>h4{
+	margin: 10px;
+	color: #333;
+}
+#mainSection>.mainTop>.imgSlider>.imgContainer>.imgList>.imgItem>h3{
+	margin: 0px;
+	color: #fff;
+	align-self: center;
+}
+#mainSection>.mainTop>.imgSlider>.imgButton>button{
+	margin: 0px 10px;
+}
+#mainSection>.mainTop>.imgSlider>.imgButton>button>i{ /* 슬라이드 버튼 */
+	color: #fff;
+    font-size: 25px;
+    margin-top: 10px;
+    padding: 3px;
+}
+#mainSection>.mainCategory{ /* 여행자 이용 서비스 */
+    padding: 0px 4%;
+    background: url("../img/mainMidbackimg.png") no-repeat center center;
+    background-size: cover;
+    margin: 60px 0px 40px;
+}
+#mainSection>.mainCategory>.cateIntro>div{
+	display: inline-block;
+    background-color: #000;
+    color: #fff;
+    border-radius: 0 0 10px 10px;
+    padding: 0.5%;
+}
+#mainSection>.mainCategory>.cateIntro>h1{
+	margin: 5px 0px;
+}
+#mainSection>.mainCategory>.cateSelect{
+	background-color: #fff;
+    width: 100%;
+    border-radius: 20px;
+    padding: 2%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#mainSection>.mainCategory>.cateSelect>.selectBox{
+	width: 35%;
+	display: flex;
+	justify-content: space-between;
+}
+#mainSection>.mainCategory>.cateSelect>.selectBox>button{
+	border: solid 1px #969696;
+    padding: 2px 10px;
+    border-radius: 15px;
+    margin: 0px 2%;
+    font-size: 16px;
+}
+#mainSection>.mainCategory>.cateSelect>.selectimgBox{
+	width: 70%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 15px;
+}
+#mainSection>.mainCategory>.cateSelect>.selectimgBox>div{
+	width: 32%;
+	height: 200px;
+	background: no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: end;
+    cursor: pointer;
+}
+#mainSection>.mainCategory>.cateSelect>.selectimgBox>div>p{
+	color: #fff;
+	background-color: #0005;
+	margin: 0px 3%;
+	padding: 2%;
+	border-radius: 10px;
+	white-space: nowrap; /* 줄 바꿈 방지 */
+	overflow: hidden;
+	text-overflow: ellipsis; /* ...으로 표시하기 */
+}
+#mainSection>.mainReview{
+	width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 2%;
+}
+#mainSection>.mainReview>.reviewBox{
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+#prevBtn, #nextBtn {
+    cursor: pointer;
+    font-size: 24px; /* 기호 크기 설정 */
+    user-select: none; /* 텍스트 선택 방지 */
+}
+#mainSection>.mainReview>.reviewBox>.reviewContainer{
+    width: 92%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+#mainSection>.mainReview>.reviewBox>.reviewContainer>.reviewList{
+	width: 1820px;
+    display: flex;
+    justify-content: space-between;
+    height: max-content;
+    transition: transform 0.5s ease;
+}
+#mainSection>.mainReview>.reviewBox>.reviewContainer>.reviewList>.reviewItem{
+    border: solid 1px #969696;
+    border-radius: 5px;
+    text-align: left;
+    width: 200px;
+    height: 280px;
+    cursor: pointer;
+    margin: 0px 10px;
+}
+#mainSection>.mainReview>.reviewBox>.reviewContainer>.reviewList>.reviewItem>.commuImg{
+	margin: 0px;
+    width: 100%;
+    height: 200px;
+    background: no-repeat center center;
+    background-size: cover;
+}
+#mainSection>.mainReview>.reviewBox>.reviewContainer>.reviewList>.reviewItem>.commuTitle{
+	white-space: nowrap; /* 줄 바꿈 방지 */
+	overflow: hidden;
+	text-overflow: ellipsis; /* ...으로 표시하기 */
+	font-size: 14px;
+}
+#mainSection>.mainReview>.reviewBox>.reviewContainer>.reviewList>.reviewItem>div{
+	font-size: 12px;
+	margin: 5px 10px;
+}
+#mainSection>.mainReview>button{
+	border: solid 1px #969696;
+    padding: 2px 10px;
+    border-radius: 15px;
+    margin: 10px auto;
+    font-size: 15px;
+    width: auto;
+}
+#mainSection>.mainCourse{
+	width: 100%;
+	margin: 4%;
+}
+#mainSection>.mainCourse>.courseIntro{
+	display: flex;
+    align-items: center;
+}
+#mainSection>.mainCourse>.courseIntro>img{
+	width: 5%;
+	margin-right: 2%;
+}
+#mainSection>.mainCourse>.courseIntro>h2,
+#mainSection>.mainCourse>.courseIntro>div{
+	color: #87bee5;
+	margin: 0px;
+}
+#mainSection>.mainCourse>.courseIntro>span{
+	color: #87bee5;
+	font-size: 20px;
+	margin: 0px 1% 0px 1%;
+}
+#mainSection>.mainCourse>.courseImg{
+	width: 100%;
+	padding: 0px 4%;
+	height: 300px;
+	display: flex;
+}
+#mainSection>.mainCourse>.courseImg>div{
+    width: 12%;
+    height: 280px;
+	margin: 0px 1%;
+	background: no-repeat center center;
+    background-size: cover;
+    display: flex;
+	align-items: end;
+    cursor: pointer;
+}
+#mainSection>.mainCourse>.courseImg>div>p{
+	color: #fff;
+	background-color: #0005;
+	margin: 0px 3%;
+	padding: 2%;
+	border-radius: 10px;
+	white-space: nowrap; /* 줄 바꿈 방지 */
+	overflow: hidden;
+	text-overflow: ellipsis; /* ...으로 표시하기 */
+}
+#mainSection>.mainSupport{
+	display: flex;
+	justify-content: space-between;
+	padding: 4%;
+	width: 100%;
+}
+#mainSection>.mainSupport>img{
+	width: 40%;
+}
+#mainSection>.mainSupport>.supportBox{
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+#mainSection>.mainSupport>.supportBox>.supportIntro{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+#mainSection>.mainSupport>.supportBox>.supportIntro>h2{
+	margin: 0px;
+}
+#mainSection>.mainSupport>.supportBox>.supportIntro>div>button{
+	border: solid 1px #969696;
+    padding: 2px 10px;
+    border-radius: 15px;
+    margin: 0px 2%;
+    font-size: 15px;
+    width: 100%;
+}
+#mainSection>.mainSupport>.supportBox>.supportList{
+	margin-top: 20px;
+	height: max-content;
+}
+#mainSection>.mainSupport>.supportBox>.supportList>.supportItem{
+	display: flex;
+	white-space: nowrap; /* 줄 바꿈 방지 */
+	overflow: hidden;
+	text-overflow: ellipsis; /* ...으로 표시하기 */
+	cursor: pointer;
+}
+#mainSection>.mainSupport>.supportBox>.supportList>.supportItem>span{
+	margin: 0px 2%;
+}
+
+
+
+/* 푸터 : footer.jsp */
+footer {
+   	margin-top:30px;
+   	padding-bottom:30px;
+    color: #fff0;
+    background-color:rgb(247,247,247);
+}
+footer>.footerContainer {
+    margin: 0 auto;
+    display: flex;
+    width: 92%;
+}
+footer>.footerContainer>.footerLeft,
+footer>.footerContainer>.footerCenter,
+footer>.footerContainer>.footerRight {
+    flex: 1;
+    min-width: 300px;
+    margin: 5% 4% 5%;
+}
+
+footer>.footerContainer>.footerRight>div>img{
+	width:100px;
+	height:50px;
+	border-radius:15px;
+}
+footer>.footerContainer>.footerRight>div>img:nth-child(2){
+	margin-left:30px;
+}
+footer>.footerContainer>.footerLeft>p,
+footer>.footerContainer>.footerCenter>p {
+    margin: 5px 0;
+    font-size:12px;
+}
+footer>.footerContainer>.footerCenter>h4 {
+    margin: 0px 0px 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+footer>.footerTop{
+	margin: 1% 0px 1% 6.5%;
+}
+footer>.footerTop>span{
+	cursor: pointer;
+	margin: 0px 1%;
+	font-size:13px;
+}
+#footerOverlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000075;
+}
+#footerModal{
+    width: 80%;
+    height: 98%;
+    padding: 2%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 1%;
+    right: 10%;
+    background-color: #fff;
+    border: solid 1px #969696; 
+    border-radius: 30px;
+    overflow: scroll;
+}
+#footerModal::-webkit-scrollbar{
+	display: none;
+}
+#footerModal>button{
+	align-self: flex-end;
+}

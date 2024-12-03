@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.human.cds.mapper.MypageMapper">
+	<!-- id는 dao에서 sql.session뒤에 .뭐시기 그거랑 맞춰야함 -->
+
+	<select id="getDestinationList" resultType="DestinationDBVO">
+		select * from
+		destination
+	</select>
+
+	<!-- 업데이트는 parameterType(보내는값) -->
+	<update id="updateMyInfo" parameterType="MemberVO">
+		update member
+		set
+		password = #{password},
+		phone = #{phone},
+		birth_date = #{birth_date}
+		where m_id = #{m_id}
+	</update>
+
+	<update id="cancel" parameterType="_int">
+		update member
+		set
+		withdrawal_request = 'Y'
+		where m_id = #{m_id}
+	</update>
+
+	<resultMap id="commentResultMap" type="CommentVO">
+		<result property="c_idx" column="c_idx" />
+		<result property="memberId" column="member_id" />
+		<result property="content" column="content" />
+		<result property="createdAt" column="created_at" />
+		<result property="updatedAt" column="updated_at" />
+		<result property="isDeleted" column="is_deleted" />
+		<result property="clike" column="clike" />
+		<result property="unlike" column="unlike" />
+		<result property="contentId" column="content_id" />
+		<result property="gender" column="gender" />
+	</resultMap>
+
+	<select id="getCommentsByMemberId" parameterType="String"
+		resultMap="commentResultMap">
+		SELECT c_idx, name, content, created_at, updated_at,
+		is_deleted, clike,
+		unlike, content_id, gender
+		FROM course_comment
+		WHERE
+		name = #{name}
+	</select>
+
+	<select id="getCourseInfoByContentId" parameterType="String"
+		resultType="CourseInfoVO">
+		SELECT *
+		FROM travel_course
+		WHERE content_id = #{content_id}
+	</select>
+	
+	<!-- 커뮤니티 정보 전체조회 -->
+	<select id="getContentByMemberId" resultType="CommunityVO">
+			select *
+			from community
+			where memberId = #{memId}
+	
+	</select>
+	
+	
+	<!-- 이미지 조회 -->
+	<select id="getImgByCidx" resultType="CommunityImgVO">
+		select *
+		from image_paths
+		where  postId = #{c_idx}
+	</select>
+	
+	
+	<!-- 댓글조회(모달)-->
+	<select id="getcommentByCidx" resultType="CommunityContentVO">
+		select *
+		from community_comments
+		where c_idx = #{c_idx}
+	</select>
+	
+	
+	<select id="getComuCommentByMemberId" resultType="CommunityContentVO">
+		select *
+		from community_comments
+		where memberId = #{memId}
+	
+	</select>
+	
+	
+</mapper>
+
+

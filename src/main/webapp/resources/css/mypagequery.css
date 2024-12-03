@@ -1,0 +1,150 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.section {
+	width: 1300px; /* 부모 요소는 100% 너비로 설정 */
+	display: flex;
+	justify-content: center; /* 수평 중앙 정렬 */
+	align-items: center; /* 수직 중앙 정렬 */
+	flex-direction: column; /* 자식 요소들을 세로로 배치 */
+	padding: 20px; /* 여백을 줘서 중앙으로 배치 */
+}
+
+.background {
+	width: 800px; /* 고정 너비 설정 */
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+	border: 2px solid #6495ED; /* 테두리 설정 */
+	padding: 10px;
+	border-radius: 15px;
+}
+
+.background>hr {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 98%;
+	border: none; /* 기본 테두리 제거 */
+	height: 2px; /* 선의 두께를 5px로 설정 (원하는 두께로 변경 가능) */
+	background-color: #6495ED; /* 선의 색상 설정 */
+}
+
+.myquery-title{
+	width: 800px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    display: flex;
+}
+
+.myquery-title>h2{
+    font-size: 20px;
+    margin:0 auto;
+}
+
+.myquery-intro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 800px;
+    margin-top: 2px;
+    height: 60px;
+}
+
+.myquery-intro>p{
+    font-size: 15px;
+    color: rgb(0, 0, 0, 0.8);
+    margin-left: 25px;
+}
+
+.myquery-kakao{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 800px;
+    margin-top: 2px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom:15px;
+}
+
+.myquery-kakao>img{
+	width:50px;
+	height:50px;
+	margin:100px 0px 20px 0px;
+}
+
+.myquery-kakao>p{
+
+    color: rgb(50 , 30 , 30);
+    font-size: 12px;
+    margin-bottom: 40px;
+
+}
+
+.myquery-kakao>a>button{
+
+    width: 300px;
+    height: 60px;
+    border: none;
+    background: rgb(251, 227, 0);
+    border-radius: 30px;
+    color: rgb(50 , 30 , 30);;
+    font-weight: bold;
+    text-decoration: none;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.myquery-kakao>a>button:hover{
+
+    width: 300px;
+    height: 60px;
+    border: none;
+    background: rgb(50 , 30 , 30);
+    border-radius: 30px;
+    color: rgb(251, 227, 0);
+    font-weight: bold;
+    text-decoration: none;
+    font-size:25px;
+}
+
+.homebt {
+    width: 40px;
+    height: 40px;
+    background-image: url("../img/homebt.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease; /* 크기 변화를 위한 부드러운 전환 */
+}
+
+/* 마우스를 올렸을 때 흔들리는 애니메이션 */
+.homebt:hover {
+    animation: shake 0.5s ease;
+    animation-iteration-count: 2; /* 애니메이션이 두 번 반복되도록 */
+}
+
+/* 버튼 흔들흔들 애니메이션 정의 */
+@keyframes shake {
+    0% { transform: translate(0, 0); } /* 제자리 */
+    50% { transform: translate(0, -2px); } /* 위로 이동 */
+    100% { transform: translate(0, 0); } /* 제자리 */
+}
+
+/* 클릭했을 때 크기 작아짐 */
+.homebt:active {
+    transform: scale(0.9); /* 버튼이 90% 크기로 작아짐 */
+    transition: transform 0.1s ease; /* 클릭 후 크기 변화를 부드럽게 전환 */
+}

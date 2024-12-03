@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.human.cds.mapper.MemberMapper">
+
+    <!-- 회원 정보 삽입 -->
+    <insert id="insertMember" parameterType="MemberVO">
+        insert into member (member_id,password ,phone,name,email,gender)
+        VALUES (#{member_id}, #{password}, #{phone}, #{name}, #{email}, #{gender})
+    </insert>
+
+    <!-- 전화번호 중복 확인 -->
+    <select id="checkPhoneDuplicate" parameterType="String" resultType="int">
+        SELECT COUNT(*) FROM member WHERE phone = #{phone}
+    </select>
+
+    <!-- 이메일 중복 확인 -->
+    <select id="checkEmailDuplicate" parameterType="String" resultType="int">
+        SELECT COUNT(*) FROM member WHERE email = #{email}
+    </select>
+
+    <!-- 아이디 중복 확인 -->
+    <select id="checkId" parameterType="String" resultType="int">
+        SELECT COUNT(*) FROM member WHERE member_id = #{member_id}
+    </select>
+    
+    <!-- 로그인 -->
+    <select id="login" parameterType="map" resultType="memberVO">
+		select * from member
+			where member_id = #{memberId} and password = #{password} and withdrawal_request = 'N'
+    </select>
+    
+    <!-- 아이디 찾기 -->
+    <select id="idFind" parameterType="map" resultType="memberVO">
+		select * from member
+			where name = #{name} and email = #{email} and withdrawal_request = 'N'
+    </select>
+    
+    <!-- 비밀번호 찾기 -->
+    <select id="passwordFind" parameterType="map" resultType="memberVO">
+		select * from member
+			where member_id = #{member_id} and name = #{name} and email = #{email} and withdrawal_request = 'N'
+    </select>
+    
+    <!-- 회원 카운트 -->
+    <select id="memberCount" resultType="_int">
+    	select count(*) from member
+    </select>
+    
+    <!-- 구글로그인 -->
+    <insert id="googleLogin" parameterType="memberVO">
+    	insert into member (member_id,name,email)
+        VALUES (#{member_id}, #{name}, #{email})
+    </insert>
+    <!-- 카카오로그인 -->
+    <insert id="kakaoLogin" parameterType="memberVO">
+    	insert into member (member_id,name,email)
+        VALUES (#{member_id}, #{name}, #{email})
+    </insert>
+    <!-- 네이버로그인 -->
+    <insert id="naverLogin" parameterType="memberVO">
+    	insert into member (member_id,name,email,gender,birth_date,phone)
+        VALUES (#{member_id}, #{name}, #{email}, #{gender}, #{birth_date}, #{phone})
+    </insert>
+    
+</mapper>

@@ -1,0 +1,224 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+.section {
+    width: 1300px; /* 부모 요소는 100% 너비로 설정 */
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    flex-direction: column; /* 자식 요소들을 세로로 배치 */
+    padding: 20px; /* 여백을 줘서 중앙으로 배치 */
+}
+
+.background {
+    width: 800px; /* 고정 너비 설정 */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #6495ED; /* 테두리 설정 */
+    margin-top: 50px;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+
+.background > hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width:98%;
+    border: none; /* 기본 테두리 제거 */
+    height: 1px; /* 선의 두께를 5px로 설정 (원하는 두께로 변경 가능) */
+    background-color: #6495ED; /* 선의 색상 설정 */
+}
+
+.main-areaname{
+    background: white;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.main-areaname>h2{
+	font-size:20px;
+	font-weight:900;
+    margin-top: 10px;
+}
+
+.main-info{
+    background-color: white;
+    width: 100%;
+    height:110px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.myinfo-top{
+    display: flex;
+    position: relative;
+}
+
+.myinfo-top>button{
+    width: 30px;
+    height: 30px;
+    background:transparent;
+    border: none;
+    position: relative;
+    margin-top: 25px;
+    left: 77%;
+    cursor: pointer;
+
+}
+
+.myinfo-top>p{
+    margin:25px 0px 10px 20px ;
+    font-size: 25px;
+    font-weight: bold;
+    
+}
+
+.myinfo-top>button>img{
+    width: 30px;
+    height: 30px;
+}
+
+.myinfo-sub>p{
+    color: rgba(0, 0, 0, 0.3);
+    margin-left: 20px;
+}
+
+
+.main-category{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    width: 100%;
+    height: 150px;
+    align-items: center;
+    margin-top: 10px;
+
+}
+
+.main-category>a{
+   width: 200px;
+   height: 180px;
+   border: none;
+   text-decoration-line: none;
+   text-align: center;
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+   padding: 0px 30px;
+}
+
+
+.main-category>a>div{
+    background-color:  white;
+    border: rgba(0, 0, 0, 0.2) solid 1px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-top: 20%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition: all 0.3s ease; /* 애니메이션 부드럽게 */
+}
+
+
+.main-category>a>div:hover{
+	transform: translateY(-2px); /* 살짝 위로 올라가는 효과 */
+	border: 2px solid #6495ED;
+}
+
+.main-category>a>div:active{
+	transform: translateY(0); /* 클릭 시 다시 원위치 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 클릭 시 그림자 원래대로 */
+}
+
+.main-category>a>div>img{
+   width: 40px;
+   height: 40px;
+   margin: 0 auto;
+   justify-content: center;
+    align-items: center;
+}
+
+.main-category>a>p{
+  font-size: 13px;
+  color: black;
+  margin-top: 10px;
+}
+
+.main-slogan{
+    width: 100%;
+}
+
+.main-logout{
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    display:flex;
+    background-color: white;
+	border
+}
+
+.main-logout > button {
+    border: 1px solid #6495ED; /* 기본 테두리 */
+    background-color: transparent; /* 투명 배경 */
+    color: #6495ED; /* 텍스트 색상 */
+    width: auto;
+    height: 40px; /* 높이를 조금 키워줌 */
+    font-size: 15px; /* 폰트 사이즈 */
+    padding: 10px 20px; /* 여백 추가로 더 넉넉하게 */
+    cursor: pointer;
+    border-radius: 5px; /* 모서리 둥글게 */
+    transition: all 0.3s ease; /* 애니메이션 부드럽게 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과로 입체감 */
+    margin:5px;
+}
+
+.main-logout > button:hover {
+    background-color: #6495ED; /* 배경색이 #6495ED로 변함 */
+    color: white; /* 텍스트 색상이 흰색으로 변함 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* hover 시 그림자가 더 진해짐 */
+    transform: translateY(-2px); /* 살짝 위로 올라가는 효과 */
+}
+
+.main-logout > button:active {
+    transform: translateY(0); /* 클릭 시 다시 원위치 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 클릭 시 그림자 원래대로 */
+}
+
+
+.slider {
+    width: 100%;
+    height: auto; /* 높이를 자동으로 설정하여 이미지 크기에 맞게 조정 */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.sliderimg {
+    width: 100%;
+    height: auto; /* 높이를 이미지 비율에 맞게 조정 */
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.sliderimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 이미지의 비율을 유지하며 잘리지 않도록 설정 */
+}
+
+.slick-dots{
+	display: none !important;
+}
